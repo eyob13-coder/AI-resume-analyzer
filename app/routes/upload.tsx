@@ -5,7 +5,7 @@ import {usePuterStore} from "~/lib/puter";
 import {useNavigate} from "react-router";
 
 import {generateUUID} from "~/lib/utils";
-import {prepareInstructions} from "../../constants";
+import {prepareInstructions, AIResponseFormat} from "../../constants";
 import { convertPdfToImage } from '~/lib/pdft2image';
 import FileUploader from '~/components/FileUplader';
 
@@ -50,7 +50,7 @@ const Upload = () => {
 
         const feedback = await ai.feedback(
             uploadedFile.path,
-            prepareInstructions({jobTitle, jobDescription})
+            prepareInstructions({jobTitle, jobDescription, AIResponseFormat})
         )
         if (!feedback) return setStatusText('Error: Failed to analyze resume');
 
